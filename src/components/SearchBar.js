@@ -25,7 +25,9 @@ const API_KEY = process.env.REACT_APP_API_KEY;
          const searchValue = this.state.value
          axios.get(`https://api.unsplash.com/search/photos/?client_id=${API_KEY}&per_page=25&orientation=landscape&query=${searchValue}}`).then(res => {
             if(res.data.results.length===0){
-                this.setState({message:'No Matches Found'})
+                this.setState({message:'No Matches Found',
+                                searchResult:[]
+            })
             }
             else{
              this.setState({
