@@ -18,6 +18,10 @@ body{
     margin-bottom:20px;
     margin-top:20px
   }
+  .msg{
+      padding: 20px;
+      text-align: center
+  }
   .image-results{
     background-color:rgb(208, 221, 227);
     display: flex;

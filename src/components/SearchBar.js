@@ -11,7 +11,8 @@ const API_KEY = process.env.REACT_APP_API_KEY;
  class SearchBar extends Component {
      state = {
          value: "",
-         searchResult:[]
+         searchResult:[],
+         message: ''
      }
 
      handleChange = (e) =>{
@@ -23,11 +24,16 @@ const API_KEY = process.env.REACT_APP_API_KEY;
          e.preventDefault()
          const searchValue = this.state.value
          axios.get(`https://api.unsplash.com/search/photos/?client_id=${API_KEY}&per_page=25&orientation=landscape&query=${searchValue}}`).then(res => {
-             
+            if(res.data.results.length===0){
+                this.setState({message:'No Matches Found'})
+            }
+            else{
              this.setState({
                  
-                 searchResult: res.data.results
-             }) 
+                 searchResult: res.data.results,
+                 message: ''
+             })
+            } 
                 
  })
      }
@@ -49,6 +55,7 @@ const API_KEY = process.env.REACT_APP_API_KEY;
              
           <button className="btn-success btn-large" style={{'border-radius': '5px', 'margin-right': '2px'}}type="submit">Search<i class="fa fa-search"></i></button>
           </form>
+          <h1 class='msg'>{this.state.message}</h1>
           <SearchResults results={this.state.searchResult}/>
       </div>
     )
