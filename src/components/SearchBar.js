@@ -55,7 +55,7 @@ const API_KEY = process.env.REACT_APP_API_KEY;
                         placeholder="Search Images..."
                         onChange={this.handleChange}/>
              
-          <button className="btn-success btn-large" style={{'border-radius': '5px', 'margin-right': '2px'}}type="submit">Search<i class="fa fa-search"></i></button>
+          <button className="btn-success btn-large search-btn" style={{'border-radius': '5px', 'margin-right': '2px'}}type="submit">Search<i class="fa fa-search"></i></button>
           </form>
           <h1 class='msg'>{this.state.message}</h1>
           <SearchResults results={this.state.searchResult}/>
